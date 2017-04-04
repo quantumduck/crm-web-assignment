@@ -9,7 +9,7 @@
 
     <ul>
       <% Contact.all.each do |contact| %>
-        <li><%= contact.first_name %> <%= contact.last_name %></li>
+        <li><a href= <%= '/contacts/' + contact.id.to_s %> ><%= contact.full_name %></a></li>
       <% end %>
     </ul>
   </body>

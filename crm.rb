@@ -28,3 +28,9 @@ post '/contacts' do
   Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
   redirect to('/contacts')
 end
+
+get '/contacts/:id' do
+  puts params
+  @contact = Contact.find(params[:id].to_i)
+  erb :contact_template
+end
