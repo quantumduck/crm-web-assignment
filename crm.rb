@@ -4,6 +4,16 @@
 require 'sinatra'
 require_relative 'contact'
 
+# Fake data
+Contact.create('Mark', 'Zuckerberg', 'mark@facebook.com', 'CEO')
+Contact.create('Sergey', 'Brin', 'sergey@google.com', 'Co-Founder')
+Contact.create('Steve', 'Jobs', 'steve@apple.com', 'Visionary')
+
 get '/' do
-  'Main Menu'
+  @crm_app_name = "Bitmaker's CRM"
+  erb :index
+end
+
+get '/contacts' do
+
 end
