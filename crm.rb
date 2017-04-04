@@ -15,5 +15,11 @@ get '/' do
 end
 
 get '/contacts' do
+  @crm_app_name = "Bitmaker's CRM"
+  erb :contacts
+end
 
+get '/new' do
+  @crm_app_name = "Bitmaker's CRM"
+  erb :new_contact
 end
