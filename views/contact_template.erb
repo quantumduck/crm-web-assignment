@@ -9,5 +9,11 @@
       <li><strong>Name:</strong> <%= @contact.full_name %></li>
       <li><strong>Email:</strong> <%= @contact.email %></li>
     </ul>
+
+
+    <form action= <%= '/contacts/' + @contact.id.to_s %> method='post'>
+      <input type='submit' value='Delete Contact'>
+    </form>
+
   </body>
 </html>
