@@ -109,11 +109,11 @@ body > footer {
 .copyright {
   display: inline-block;
   margin: 0px;
-  line-height 
+  line-height: 3em;
 }
 
 .logo {
-  display: inline-block;
+  float: left;
   margin: 0px;
   line-height: 3px;
   /*background-color: red;*/
