@@ -1,21 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title><%= @contact.full_name %></title>
-  </head>
-  <body>
-    <a href= '/'>Home</a>
+
     <ul>
       <li><strong>Name:</strong> <%= @contact.full_name %></li>
       <li><strong>Email:</strong> <%= @contact.email %></li>
       <li><strong>Note:</strong> <%= @contact.note %></li>
     </ul>
-
-
-    <form action= <%= '/contacts/' + @contact.id.to_s %> method='post'>
-      <input type='submit' value='Delete Contact'>
-    </form>
-
-  </body>
-</html>

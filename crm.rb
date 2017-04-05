@@ -30,8 +30,10 @@ post '/contacts' do
 end
 
 get '/contacts/:id' do
+  @crm_app_name = "Bitmaker's CRM"
   puts params
   @contact = Contact.find(params[:id].to_i)
+  puts @contact.full_name
   erb :contact_template
 end
 
