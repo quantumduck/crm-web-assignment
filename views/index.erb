@@ -1,4 +1,4 @@
-<h1>There are <b><%= '6' %></b> contacts</h1>
+<h1>There are <b><%= Contact.all.length %></b> contacts</h1>
 <ul>
   <% Contact.all.each do |contact| %>
     <li>
