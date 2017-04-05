@@ -5,9 +5,11 @@ require 'sinatra'
 require_relative 'contact'
 
 # Fake data
-Contact.create('Mark', 'Zuckerberg', 'mark@facebook.com', 'CEO')
-Contact.create('Sergey', 'Brin', 'sergey@google.com', 'Co-Founder')
-Contact.create('Steve', 'Jobs', 'steve@apple.com', 'Visionary')
+Contact.create('Marty', 'McFly', 'maty@mcfly.com', 'Chicken')
+Contact.create('George', 'McFly', 'george@mcfly.com', 'Dad')
+Contact.create('Lorraine', 'McFly', 'lorraine@mcfly.com', 'Mom')
+Contact.create('Biff', 'Tannen', 'biff@Tannen.com', 'Casino Mogul')
+Contact.create('Doc', 'Brown', 'doc@brown.com', 'Blacksmith')
 
 get '/' do
   @crm_app_name = "Bitmaker's CRM"
