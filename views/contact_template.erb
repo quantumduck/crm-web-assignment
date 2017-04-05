@@ -3,9 +3,5 @@
       <h2><strong>Name:</strong> <%=@contact_info[:name]%></h2>
       <p><strong>Email:</strong> <%=@contact_info[:email]%></p>
       <p><strong>Note:</strong> <%=@contact_info[:note]%></p>
-      <form action='/contacts/<%= @contact_info[:index] %>' method='post'>
-        <input type='hidden' name='_method' value='delete'>
-        <input type='submit' value='Delete Contact'>
-      </form>
   </li>
 </ul>

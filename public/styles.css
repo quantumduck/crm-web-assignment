@@ -103,5 +103,27 @@ body > footer {
   font-weight: bold;
   padding: 18px;
   font-size: 15px;
-  margin: 10px auto;
+  margin: auto;
+}
+
+.copyright {
+  display: inline-block;
+  margin: 0px;
+  line-height 
+}
+
+.logo {
+  display: inline-block;
+  margin: 0px;
+  line-height: 3px;
+  /*background-color: red;*/
+}
+
+
+.logo > pre {
+  font-family: monospace;
+  font-size: 5px;
+  font-weight: 900;
+  padding: 0px;
+  margin: 0px;
 }

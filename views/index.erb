@@ -4,7 +4,7 @@
     <li>
       <a href= <%= '/contacts/' + contact.id.to_s %> ><b><%= contact.full_name %></b> (<%= contact.email %>)</a>
       <footer>
-        <a href="#">Edit</a> | <a href="#">Delete</a>
+        <a href="/contacts/<%=contact.id.to_s%>/edit">Edit</a> | <a href="/contacts/<%=contact.id.to_s%>/delete">Delete</a>
       </footer>
     </li>
   <% end %>

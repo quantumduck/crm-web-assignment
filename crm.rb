@@ -16,6 +16,11 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  @crm_app_name = "Bitmaker's CRM"
+  erb :about
+end
+
 get '/contacts' do
   @crm_app_name = "Bitmaker's CRM"
   # The homepage is now the same as the old contacts list page
@@ -40,6 +45,8 @@ get '/contacts/:id' do
   puts
   puts contact.class
   puts
+  # Note: the @contact_info hash was used because I had difficulty passing the
+  # @contact object into the html parser without raising type errors.
   if contact
     @contact_info = {name: contact.full_name, email: contact.email, note: contact.note, index: idnum}
     erb :contact_template
@@ -54,10 +61,25 @@ end
 get '/contacts/:id/edit' do
   @contact = Contact.find(params[:id].to_i)
   if @contact
-    erb :contact_template
+    erb :edit_contact
   else
     raise Sinatra::NotFound
   end
+end
+
+get '/contacts/:id/delete' do
+  idnum = params[:id].to_i
+  contact = Contact.find(idnum)
+  # Note: the @contact_info hash was used because I had difficulty passing the
+  # @contact object into the html parser without raising type errors.
+  if contact
+    @contact_info = {name: contact.full_name, email: contact.email, note: contact.note, index: idnum}
+    erb :delete_template
+  else
+    puts "why am I here?"
+    raise Sinatra::NotFound
+  end
+
 end
 
 put '/contacts/:id' do
@@ -67,8 +89,7 @@ put '/contacts/:id' do
     @contact.last_name = params[:last_name]
     @contact.email = params[:email]
     @contact.note = params[:note]
-
-    redirect to('/')
+    redirect to("/contacts/#{params[:id]}")
   else
     raise Sinatra::NotFound
   end
