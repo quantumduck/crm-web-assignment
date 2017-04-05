@@ -5,7 +5,7 @@ require 'sinatra'
 require_relative 'contact'
 
 # Fake data
-Contact.create('Marty', 'McFly', 'maty@mcfly.com', 'Chicken')
+Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Chicken')
 Contact.create('George', 'McFly', 'george@mcfly.com', 'Dad')
 Contact.create('Lorraine', 'McFly', 'lorraine@mcfly.com', 'Mom')
 Contact.create('Biff', 'Tannen', 'biff@Tannen.com', 'Casino Mogul')
@@ -18,7 +18,8 @@ end
 
 get '/contacts' do
   @crm_app_name = "Bitmaker's CRM"
-  erb :contacts
+  # The homepage is now the same as the old contacts list page
+  erb :index
 end
 
 get '/new' do
@@ -28,19 +29,57 @@ end
 
 post '/contacts' do
   Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
-  redirect to('/contacts')
+  redirect to('/')
 end
 
 get '/contacts/:id' do
   @crm_app_name = "Bitmaker's CRM"
   puts params
-  @contact = Contact.find(params[:id].to_i)
-  puts @contact.full_name
+  idnum = params[:id].to_i
+  contact = Contact.find(idnum)
+  puts
+  puts contact.class
+  puts
+  if contact
+    @contact_info = {name: contact.full_name, email: contact.email, note: contact.note, index: idnum}
+    erb :contact_template
+  else
+    puts "why am I here?"
+    raise Sinatra::NotFound
+  end
+
   erb :contact_template
 end
 
-post '/contacts/:id' do
-  contact = Contact.find(params[:id].to_i)
-  contact.delete
-  redirect to('/contacts')
+get '/contacts/:id/edit' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    erb :contact_template
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+put '/contacts/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    @contact.first_name = params[:first_name]
+    @contact.last_name = params[:last_name]
+    @contact.email = params[:email]
+    @contact.note = params[:note]
+
+    redirect to('/')
+  else
+    raise Sinatra::NotFound
+  end
+end
+
+delete '/contacts/:id' do
+  @contact = Contact.find(params[:id].to_i)
+  if @contact
+    @contact.delete
+    redirect to('/')
+  else
+    raise Sinatra::NotFound
+  end
 end

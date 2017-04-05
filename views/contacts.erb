@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Contacts</title>
-  </head>
-  <body>
-    <a href= '/'>Home</a>
-    <h1>All Contacts</h1>
-
-    <ul>
-      <% Contact.all.each do |contact| %>
-        <li><a href= <%= '/contacts/' + contact.id.to_s %> ><%= contact.full_name %></a></li>
-      <% end %>
-    </ul>
-  </body>
-</html>
+<h1>There are <b><%= Contact.all.length %></b> contacts</h1>
+<ul>
+  <% Contact.all.each do |contact| %>
+    <li>
+      <a href= <%= '/contacts/' + contact.id.to_s %> ><b><%= contact.full_name %></b> (<%= contact.email %>)</a>
+      <footer>
+        <a href="#">Edit</a> | <a href="#">Delete</a>
+      </footer>
+    </li>
+  <% end %>
+</ul>
