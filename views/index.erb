@@ -1,40 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title><%= @crm_app_name %></title>
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <header>
-     <h1><%= @crm_app_name %></h1>
-
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="/new">Add a contact</a></li>
-        <li><a href="#">About</a></li>
-      </ul>
-    </nav>
-    </header>
-
-    <main>
-      <h1>There are <b><%= '6' %></b> contacts</h1>
-      <ul>
-        <% Contact.all.each do |contact| %>
-          <li>
-            <a href= <%= '/contacts/' + contact.id.to_s %> ><%= contact.full_name %></a>
-            <footer>
-              <a href="#">Edit</a> | <a href="#">Delete</a>
-            </footer>
-          </li>
-        <% end %>
-      </ul>
-    </main>
-
-    <footer>
-      &copy; Bitmaker 2017
-    </footer>
-
-  </body>
-</html>
+<h1>There are <b><%= '6' %></b> contacts</h1>
+<ul>
+  <% Contact.all.each do |contact| %>
+    <li>
+      <a href= <%= '/contacts/' + contact.id.to_s %> ><%= contact.full_name %></a>
+      <footer>
+        <a href="#">Edit</a> | <a href="#">Delete</a>
+      </footer>
+    </li>
+  <% end %>
+</ul>
