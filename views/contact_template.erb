@@ -1,7 +1,14 @@
+
+
+
+
 <ul>
   <li>
+    <div class="">
       <h2><strong>Name:</strong> <%=@contact_info[:name]%></h2>
       <p><strong>Email:</strong> <%=@contact_info[:email]%></p>
       <p><strong>Note:</strong> <%=@contact_info[:note]%></p>
+    </div>
+    <img src="https://unsplash.it/1000/150?image=<%= @contact_info[:index]%>" alt="">
   </li>
 </ul>
