@@ -115,14 +115,14 @@ body > footer {
 .logo {
   float: left;
   margin: 0px;
-  line-height: 3px;
+  line-height: 5px;
   /*background-color: red;*/
 }
 
 
 .logo > pre {
   font-family: monospace;
-  font-size: 5px;
+  font-size: 8px;
   font-weight: 900;
   padding: 0px;
   margin: 0px;

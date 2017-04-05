@@ -12,23 +12,23 @@ Contact.create('Biff', 'Tannen', 'biff@Tannen.com', 'Casino Mogul')
 Contact.create('Doc', 'Brown', 'doc@brown.com', 'Blacksmith')
 
 get '/' do
-  @crm_app_name = "Bitmaker's CRM"
+  @crm_app_name = "Quantum Duck's CRM"
   erb :index
 end
 
 get '/about' do
-  @crm_app_name = "Bitmaker's CRM"
+  @crm_app_name = "Quantum Duck's CRM"
   erb :about
 end
 
 get '/contacts' do
-  @crm_app_name = "Bitmaker's CRM"
+  @crm_app_name = "Quantum Duck's CRM"
   # The homepage is now the same as the old contacts list page
   erb :index
 end
 
 get '/new' do
-  @crm_app_name = "Bitmaker's CRM"
+  @crm_app_name = "Quantum Duck's CRM"
   erb :new_contact
 end
 
@@ -38,7 +38,7 @@ post '/contacts' do
 end
 
 get '/contacts/:id' do
-  @crm_app_name = "Bitmaker's CRM"
+  @crm_app_name = "Quantum Duck's CRM"
   puts params
   idnum = params[:id].to_i
   contact = Contact.find(idnum)
