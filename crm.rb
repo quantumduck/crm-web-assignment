@@ -5,11 +5,11 @@ require 'sinatra'
 require_relative 'contact'
 
 # Fake data
-Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Chicken')
-Contact.create('George', 'McFly', 'george@mcfly.com', 'Dad')
-Contact.create('Lorraine', 'McFly', 'lorraine@mcfly.com', 'Mom')
-Contact.create('Biff', 'Tannen', 'biff@Tannen.com', 'Casino Mogul')
-Contact.create('Doc', 'Brown', 'doc@brown.com', 'Blacksmith')
+# Contact.create('Marty', 'McFly', 'marty@mcfly.com', 'Chicken')
+# Contact.create('George', 'McFly', 'george@mcfly.com', 'Dad')
+# Contact.create('Lorraine', 'McFly', 'lorraine@mcfly.com', 'Mom')
+# Contact.create('Biff', 'Tannen', 'biff@Tannen.com', 'Casino Mogul')
+# Contact.create('Doc', 'Brown', 'doc@brown.com', 'Blacksmith')
 
 get '/' do
   @crm_app_name = "Quantum Duck's CRM"
@@ -33,8 +33,13 @@ get '/new' do
 end
 
 post '/contacts' do
-  Contact.create(params[:first_name], params[:last_name], params[:email], params[:note])
-  redirect to('/')
+  contact = Contact.create(
+    first_name: params[:first_name],
+    last_name:  params[:last_name],
+    email:      params[:email],
+    note:       params[:note]
+  )
+  redirect to('/contacts')
 end
 
 get '/contacts/:id' do
@@ -103,4 +108,8 @@ delete '/contacts/:id' do
   else
     raise Sinatra::NotFound
   end
+end
+
+after do
+  ActiveRecord::Base.connection.close
 end
